@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+      {
+        "source": "/auth/:path*",
+        "destination": "https://repolens-backend-awkk.onrender.com/auth/:path*"
+      },
+      {
+        "source": "/api/:path*",
+        "destination": "https://repolens-backend-awkk.onrender.com/api/:path*"
+      },
+      {
+        "source": "/(.*)",
+        "destination": "/index.html"
+      }
+    ]
+  }

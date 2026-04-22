@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables — NEVER commit these
+.env
+**/.env
+
+# Build outputs
+frontend/dist/
+frontend/.vite/
+
+# Prisma generated
+backend/src/generated/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Puppeteer cache
+.local-chromium/

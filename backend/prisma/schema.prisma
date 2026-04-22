@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  githubId    String   @unique
+  username    String
+  avatarUrl   String
+  accessToken String
+  createdAt   DateTime @default(now())
+  jobs        Job[]
+}
+
+model Job {
+  id        String      @id @default(cuid())
+  repoUrl   String
+  repoName  String
+  status    JobStatus   @default(PENDING)
+  error     String?
+  createdAt DateTime    @default(now())
+  userId    String
+  user      User        @relation(fields: [userId], references: [id])
+  documents Document[]
+}
+
+model Document {
+  id        String       @id @default(cuid())
+  type      DocumentType
+  content   String
+  jobId     String
+  job       Job          @relation(fields: [jobId], references: [id])
+  createdAt DateTime     @default(now())
+}
+
+model RepoCache {
+  id            String           @id @default(cuid())
+  repoHash      String           @unique
+  repoUrl       String
+  lastGenerated DateTime         @default(now())
+  documents     CachedDocument[]
+}
+
+model CachedDocument {
+  id          String       @id @default(cuid())
+  type        DocumentType
+  content     String
+  repoCacheId String
+  repoCache   RepoCache    @relation(fields: [repoCacheId], references: [id])
+}
+
+enum JobStatus {
+  PENDING
+  PROCESSING
+  DONE
+  FAILED
+}
+
+enum DocumentType {
+  OVERVIEW
+  SPEC
+  ARCHITECTURE
+  TECHSTACK
+  DATABASE
+  API
+  SETUP
+  DEPLOYMENT
+}
