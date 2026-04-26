@@ -523,9 +523,9 @@ MIT — free to use, modify, and distribute with attribution.
 
 ## Author
 
-**Harsh Kumar** — Computer Science Student
+**Srajal Singh** — Computer Science Student
 
-[![GitHub](https://img.shields.io/badge/GitHub-harshkumar1306-181717?style=flat-square&logo=github)](https://github.com/harshkumar1306)
+[![GitHub](https://img.shields.io/badge/GitHub-srajalthakur-181717?style=flat-square&logo=github)](https://github.com/srajalthakur)
 
 ---
 
