@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Github, ArrowRight, Zap } from 'lucide-react';
 
-const GITHUB_AUTH_URL = 'https://backend-7lb5.onrender.com/auth/github';
+const GITHUB_AUTH_URL = 'https://repo-lens-psi.vercel.app/auth/github';
 
 const FEATURES = [
   'Architecture diagrams',
