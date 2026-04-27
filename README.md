@@ -534,6 +534,6 @@ MIT — free to use, modify, and distribute with attribution.
   <p>
     <a href="https://repolens-kappa.vercel.app">Live Demo</a>
     &nbsp;·&nbsp;
-    <a href="https://github.com/harshkumar1306/repolens/issues">Report Bug</a>
+    <a href="https://github.com/srajalthakur/repolens/issues">Report Bug</a>
   </p>
 </div>
