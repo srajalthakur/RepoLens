@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ─────────────────────────────────── */
+:root {
+  --bg:           #1C1C1A;
+  --bg-surface:   #252521;
+  --bg-elevated:  #2E2E2A;
+  --bg-sidebar:   #171715;
+  --border:       rgba(226, 228, 213, 0.07);
+  --border-hover: rgba(226, 228, 213, 0.15);
+  --text-primary:   #E2E4D5;
+  --text-secondary: #B0B2A3;
+  --text-muted:     #585B4A;
+  --accent:       #E45B11;
+  --accent-flame: #F4860D;
+  --accent-amber: #F8AB0B;
+  --accent-gold:  #FBC255;
+  --glow:         rgba(228, 91, 17, 0.15);
+  --glow-strong:  rgba(228, 91, 17, 0.28);
+}
+
+/* ─── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #root { height: 100%; overflow: hidden; }
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar          { width: 4px; height: 4px; }
+::-webkit-scrollbar-track    { background: transparent; }
+::-webkit-scrollbar-thumb    { background: var(--text-muted); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+/* ─── Spin keyframe ──────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Sidebar nav item ───────────────────────────────── */
+/* Pure CSS — no JS hover handlers so active state never gets stuck */
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--text-secondary);
+  background: transparent;
+  transition: background 0.13s, color 0.13s;
+}
+.sidebar-nav-item:hover {
+  color: var(--text-primary);
+  background: rgba(226, 228, 213, 0.05);
+}
+.sidebar-nav-item.active {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+  font-weight: 500;
+}
+
+/* ─── Sidebar: New Analysis button ──────────────────── */
+.sidebar-new-btn {
+  background: rgba(228, 91, 17, 0.11);
+  border: 1px solid rgba(228, 91, 17, 0.22);
+  color: var(--accent);
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  border-radius: 8px;
+}
+.sidebar-new-btn:hover {
+  background: rgba(228, 91, 17, 0.2);
+  border-color: rgba(228, 91, 17, 0.4);
+}
+
+/* ─── Sidebar: kbd badge ─────────────────────────────── */
+.sidebar-kbd {
+  font-size: 11px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: rgba(228, 91, 17, 0.14);
+  color: rgba(228, 91, 17, 0.65);
+}
+
+/* ─── Sidebar: icon button (logout / collapse) ───────── */
+.sidebar-icon-btn {
+  padding: 6px;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar-icon-btn:hover {
+  color: var(--text-primary);
+  background: rgba(226, 228, 213, 0.07);
+}
+
+/* ─── Command palette row hover ──────────────────────── */
+.palette-row:hover {
+  background: var(--bg-elevated) !important;
+}
+
+/* ─── Prose (Markdown) ───────────────────────────────── */
+.prose {
+  --tw-prose-body:          var(--text-primary);
+  --tw-prose-headings:      var(--text-primary);
+  --tw-prose-lead:          var(--text-secondary);
+  --tw-prose-links:         var(--accent-amber);
+  --tw-prose-bold:          var(--text-primary);
+  --tw-prose-counters:      var(--text-secondary);
+  --tw-prose-bullets:       var(--text-muted);
+  --tw-prose-hr:            var(--border);
+  --tw-prose-quotes:        var(--text-primary);
+  --tw-prose-quote-borders: var(--accent);
+  --tw-prose-captions:      var(--text-secondary);
+  --tw-prose-code:          var(--accent-amber);
+  --tw-prose-pre-code:      var(--text-primary);
+  --tw-prose-pre-bg:        var(--bg-elevated);
+  --tw-prose-th-borders:    var(--border);
+  --tw-prose-td-borders:    var(--border);
+  max-width: none !important;
+}
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.prose table {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.prose thead { background: var(--bg-surface); }
+.prose th, .prose td { border-color: var(--border) !important; }
+.prose code::before, .prose code::after { content: '' !important; }
+.prose code {
+  background: rgba(248, 171, 11, 0.09);
+  padding: 0.1em 0.38em;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.84em;
+  color: var(--accent-amber) !important;
+}
+
+/* ─── Mermaid override ───────────────────────────────── */
+.mermaid svg { max-width: 100%; }
